@@ -10,11 +10,15 @@ import java.io.File;
 import java.io.IOException;
  
 import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageInputStream;
 
 public class Captura {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		capturar(25, 585 , 519, 992);
+		GrayscaleConverter gc = new GrayscaleConverter();
+		BufferedImage imageOnDisk = ImageIO.read(new File("scr.jpg"));
+		ImageIO.write(gc.toGrayMethod1(imageOnDisk), "jpg", new File("scr.jpg"));
 	}
 	
 	public static String capturar(int x1, int y1, int x2, int y2) {
